@@ -1,0 +1,10 @@
+{% extends "notes/base.html" %}
+{% block content %}
+<h2>{{ note.title }}</h2>
+<p>{{ note.content }}</p>
+<p class="text-muted">By {{ note.owner.username }}</p>
+{% if user == note.owner %}
+  <a href="{% url 'note-edit' note.pk %}" class="btn btn-info">Edit</a>
+  <a href="{% url 'note-delete' note.pk %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}
